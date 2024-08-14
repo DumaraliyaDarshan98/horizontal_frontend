@@ -4,7 +4,7 @@
       <div class="col-lg-6 col-xl-6 col-sm-6 col-md-6 col-12 mx-auto d-table h-100 p-0 bg-white">
         <div class="d-table-cell align-middle login-leftside">
           <div class="backlink"><a href="javascript:void(0)" class="text-muted"><i class="align-middle me-2" data-feather="chevron-left"></i> Back to dashboard</a></div>
-          <form>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="sign-in-content">
               <h1>Sign In</h1>
               <p class="text-muted">Enter your email and password to sign in!</p>
@@ -15,35 +15,56 @@
             </div>
             <div class="form-group">
               <label>Email <span class="text-danger">*</span></label>
-              <input class="form-control form-control-lg" type="email" name="email"
+              <input class="form-control form-control-lg" formControlName="email" type="email" name="email"
                 placeholder="mail@sample.com" />
+              <span class="text-danger" *ngIf="
+                loginForm.controls?.['email']?.touched &&
+                loginForm.controls?.['email']?.errors?.['required']">
+                  Please enter email
+              </span>
+              <span class="text-danger" *ngIf="
+                loginForm.controls?.['email']?.touched &&
+                loginForm.controls?.['email']?.errors?.['pattern']">
+                  Please enter valid email
+              </span>
             </div>
             <div class="form-group">
               <label>Password <span class="text-danger">*</span></label>
-              <input class="form-control form-control-lg" type="password" name="password"
+              <input class="form-control form-control-lg" formControlName="password" [type]="password" name="password"
                 placeholder="Min 8 charectors" />
-                <span class="icon-right"><i class="align-middle me-2" data-feather="eye"></i> </span>
-                <!-- <span class="icon-right"><i class="align-middle me-2" data-feather="eye-off"></i> </span> -->
+              <span class="showicon" *ngIf="!showPassword" (click)="showHidePass()"><i
+                  class="bi bi-eye-fill"></i></span>
+              <span class="showicon" *ngIf="showPassword" (click)="showHidePass()"><i
+                  class="bi bi-eye-slash-fill"></i></span>
+              <span class="text-danger" *ngIf="
+                  loginForm.controls?.['password']?.touched &&
+                  loginForm.controls?.['password']?.errors?.['required']">
+                Please enter password
+              </span>
+              <span class="text-danger" *ngIf="
+                  loginForm.controls?.['password']?.touched &&
+                  loginForm.controls?.['password']?.errors?.['pattern']">
+                Password must be contain alphabet (1 capital), number and @
+              </span>
             </div>
             <div class="row align-items-center">
               <div class="col-6">
                 <div class="form-check align-items-center">
-                  <input id="customControlInline" type="checkbox" class="form-check-input"
+                  <input id="customControlInline"  type="checkbox" class="form-check-input"
                     value="remember-me" name="remember-me" checked>
                   <label class="form-check-label text-small" for="customControlInline">Keep me logged in</label>
                 </div>
               </div>
               <div class="col-6 text-end">
-                <a href="#" class="p-600">Forgot Password?</a>
+                <a href="javascript:;" class="p-600">Forgot Password?</a>
               </div>
-
             </div>
             <div class="d-grid gap-2 mt-3">
-              <a href="index.html" class="btn btn-lg btn-primary">Sign in</a>
+              <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
             </div>
           </form>
           <div class="text-center mt-3">
-            Not registered yet?  <a href="pages-sign-up.html"><strong>Create an Account</strong></a>
+            Not registered yet?  <a><strong>Create an Account</strong></a>
           </div>
           <div class="loginFooter">
             <p class="text-muted mt-3 p-12 mb-0">© 2022 Horizon UI. All Rights Reserved. Made with love by Simmmple!</p>
@@ -53,7 +74,7 @@
       <div class="col-lg-6 col-xl-6 col-sm-6 col-md-6 col-12 p-0">
         <div class="login-rightside">
           <div class="content-wrapper text-center">
-            <img src="../../../../assets/img/login-Horizon-Logo.png" width="200"/>
+            <img src="/assets/img/login-Horizon-Logo.png" width="200"/>
             <div class="content-box">
               <p>Learn more about Horizon UI on</p>
               <h2 class="text-white">horizon-ui.com</h2>

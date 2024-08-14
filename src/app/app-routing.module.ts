@@ -10,11 +10,11 @@ const routes: Routes = [
     path: 'pages',
     loadChildren: () => import('./modules/pages/pages.module').then(m => m.PagesModule)
   },
-  // {
-  //   path: "**",
-  //   pathMatch: "full",
-  //   redirectTo: "auth"
-  // },
+  {
+    path: "**",
+    pathMatch: "full",
+    redirectTo: "login"
+  },
 ];
 
 @NgModule({
