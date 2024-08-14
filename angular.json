@@ -30,7 +30,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/app.css",
               "src/assets/css/bootstrap-icons.css",
               "src/assets/css/horizon.css"
             ],
@@ -96,7 +95,6 @@
             ],
            "styles": [
               "src/styles.scss",
-              "src/assets/css/app.css",
               "src/assets/css/bootstrap-icons.css",
               "src/assets/css/horizon.css"
             ],
