@@ -26,14 +26,17 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/css/bootstrap-icons.css",
-              "src/assets/css/horizon.css"
+              "src/assets/css/app.scss",
+              "src/assets/css/bootstrap-icons.scss",
+              "src/assets/css/horizon.scss"
             ],
             "scripts": [
+              "src/assets/js/app.js"
             ]
           },
           "configurations": {
@@ -41,13 +44,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 }
               ],
               "outputHashing": "all"
@@ -93,12 +96,13 @@
             "assets": [
               "src/favicon.ico"
             ],
-           "styles": [
-              "src/styles.scss",
-              "src/assets/css/bootstrap-icons.css",
-              "src/assets/css/horizon.css"
+            "styles": [
+              "src/assets/css/horizon.scss",
+              "src/assets/css/bootstrap-icons.scss",
+              "src/styles.scss"
             ],
             "scripts": [
+              "src/assets/js/app.js"
             ]
           }
         }
